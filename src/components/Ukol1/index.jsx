@@ -8,17 +8,14 @@ Zadání: Začneme velmi jednoduše. Zařiďte, aby se po kliknutí na tlačítk
 
 export const Ukol1 = () => {
   const [jmeno, setJmeno] = useState("Jirka");
-
+  const list = ['Jirka', 'Honza', 'Tomáš', 'Šimon'];
   return (
     <>
       <p>
         <strong>{jmeno}</strong>
       </p>
       <div>
-        <button>Jirka</button>
-        <button>Honza</button>
-        <button>Tomáš</button>
-        <button>Šimon</button>
+        {list.map(name => <button key={name} onClick={() => setJmeno(name)}>{name}</button>)}
       </div>
     </>
   );

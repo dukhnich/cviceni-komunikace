@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { Product } from "./Product";
 
 /*
@@ -12,16 +14,36 @@ Krok 3: Do prop `onSelectPrice` předejte funkci, která nastaví cenu do stavu.
 */
 
 export const Ukol3 = () => {
+  const [price, setPrice] = useState(0);
+  const list = [
+    {
+      image: '/clothing/item01.jpg',
+      name: 'Bunda',
+      price: 500
+    },
+    {
+      image: '/clothing/item02.jpg',
+      name: 'Halenka',
+      price: 1200
+    },
+    {
+      image: '/clothing/item03.jpg',
+      name: 'Svetr',
+      price: 1500
+    },
+    {
+      image: '/clothing/item04.jpg',
+      name: 'Mikina',
+      price: 800
+    },
+  ]
   return (
     <>
       <p>
-        Cena: <strong>0 Kč</strong>
+        Cena: <strong>{price} Kč</strong>
       </p>
       <div className="products">
-        <Product image="/clothing/item01.jpg" name="Bunda" price={500} />
-        <Product image="/clothing/item02.jpg" name="Halenka" price={1200} />
-        <Product image="/clothing/item03.jpg" name="Svetr" price={1500} />
-        <Product image="/clothing/item04.jpg" name="Mikina" price={800} />
+        {list.map(product => <Product {...product} key={product.name} onSelectPrice={setPrice} />)}
       </div>
     </>
   );

@@ -12,17 +12,14 @@ Krok 2: Do prop `onSelectName` předejte funkci, která nastaví jméno do stavu
 
 export const Ukol2 = () => {
   const [jmeno, setJmeno] = useState('Jirka');
-  
+  const list = ['Jirka', 'Honza', 'Tomáš', 'Šimon'];
   return (
     <>
       <p>
         <strong>{jmeno}</strong>
       </p>
       <div className="button-group">
-        <IconButton label="Jirka" />
-        <IconButton label="Honza" />
-        <IconButton label="Tomáš" />
-        <IconButton label="Šimon" />
+        {list.map(name => <IconButton label={name} key={name} onSelectName={setJmeno} />)}
       </div>
     </>
   );
